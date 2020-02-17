@@ -1,0 +1,18 @@
+1, The major concept of Bokeh is that graphs are built up one layer at a time. We start out by creating a figure, and then we add elements, called glyphs, to the figure. 
+
+2. Glyphs can take on many shapes depending on the desired use: circles, lines, patches, bars, arcs, and so on.
+
+3. First, we make a plot using the figure method and then we append our glyphs to the plot by calling the appropriate method and passing in data. Finally, we show our plot.
+
+4. A histogram is a common choice for an initial visualization of a single variable because it shows the distribution of the data. The x-position is the value of the variable grouped into intervals called bins, and the height of each bar represents the count (number) of data points in each interval. To create the data for the bars, we can use the numpy histogram function which calculates the number of data points in each specified bin.
+
+6. There are easier ways to create a basic histogram in Python, and the same result could be done using a few lines of matplotlib.
+
+7. Adding Interactivity: A useful inspector is the tooltip which appears when a user mouses over data points and is called the HoverTool in Bokeh. In order to add tooltips, we need to change our data source from a dataframe to a ColumnDataSource, a key concept in Bokeh. This is an object specifically used for plotting that includes data along with several methods and attributes.
+
+8. The ColumnDataSource allows us to add annotations and interactivity to our graphs, and can be constructed from a pandas dataframe. The actual data itself is held in a dictionary accessible through the data attribute of the ColumnDataSource. When we add glyphs using a ColumnDataSource, we pass in the ColumnDataSource as the source parameter and refer to the column names using strings.
+
+9. ColumnDataSource only creates a shallow copy of data. Use e.g. ColumnDataSource(copy.deepcopy(data)) if initializing from another ColumnDataSource.data object that you want to keep independent.
+
+10. We pass our HoverToolinstance a list of tooltips as Python tuples where the first element is the label for the data and the second references the specific data we want to highlight.
+
